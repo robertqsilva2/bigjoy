@@ -10,19 +10,19 @@ app.get("/bot", async (req, res) => {
   return res.status(200).json({ mensagem: "servidor on papai" });
 });
 
-// cron.schedule("*/5 * * * *", () => {
-//   axios
-//     .get("/bot")
-//     .then((response) => {
-//       console.log("Solicitação de manutenção enviada com sucesso");
-//     })
-//     .catch((error) => {
-//       console.error(
-//         "Erro ao enviar a solicitação de manutenção:",
-//         error.message
-//       );
-//     });
-// });
+cron.schedule("*/5 * * * *", () => {
+   axios
+     .get("https://bigjoy.onrender.com/bot")
+     .then((response) => {
+       console.log("Solicitação de manutenção enviada com sucesso");
+     })
+     .catch((error) => {
+       console.error(
+         "Erro ao enviar a solicitação de manutenção:",
+         error.message
+       );
+    });
+ });
 
 bot()
 
